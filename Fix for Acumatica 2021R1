@@ -1,0 +1,32 @@
+This extension needs a modification for Acumatica 2021R1.  The following changes will make it compatible with 2021R1.
+
+BusinessAccountMaintPXKBExt : 
+   Replace the following lines:
+         21       if (Base.converToCustomer.GetEnabled())
+         22           Base.converToCustomer.PressButton(adapter);
+   with:
+         21       if (Base.Actions["ExtendToCustomer"].GetEnabled())
+         22           Base.Actions["ExtendToCustomer"].Press();
+
+   Replace the following lines:
+         48       if (Base.converToVendor.GetEnabled())
+         49           Base.converToVendor.PressButton(adapter);
+   with:      
+         48       if (Base.Actions["ExtendToVendor"].GetEnabled())
+         49           Base.Actions["ExtendToVendor"].Press();
+
+CustomerMaintPXKBExt :
+   Replace the following lines:
+         20       if (Base.extendToVendor.GetEnabled())
+         21           Base.extendToVendor.Press();
+   with:
+         20       if (Base.Actions["ExtendToVendor"].GetEnabled())
+         21           Base.Actions["ExtendToVendor"].Press();
+
+VendorMaintPXKBExt :
+   Replace the following lines:
+         20       if (Base.extendToCustomer.GetEnabled())
+         21           Base.extendToCustomer.Press();
+   with:
+         20       if (Base.Actions["ExtendToCustomer"].GetEnabled())
+         21           Base.Actions["ExtendToCustomer"].Press();
